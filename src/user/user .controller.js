@@ -1,7 +1,8 @@
 'use strict' 
 
 import User from './user.model.js'
-import { encrypt, checkPassword, checkUpdate } from '../utils/validator.js'
+import { encrypt, checkPassword, checkUpdate } from '../../utils/validator.js'
+import { generateJwt } from '../../utils/jwt.js'
 
 export const test = (req, res)=>{
     console.log('test is running')
@@ -10,13 +11,9 @@ export const test = (req, res)=>{
 
 export const register = async(req, res)=>{
     try{
-
         let data = req.body
-
         data.password = await encrypt(data.password)
-
         data.role = 'CLIENT'
-
         let user = new User(data)
         await user.save() 
         return res.send({message: `Registered successfully, can be logged with username ${user.username}`})
@@ -26,22 +23,37 @@ export const register = async(req, res)=>{
     }
 }
 
+export const get = async (req, res) => {
+    try {
+        let users = await User.find()
+        return res.send({ users })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: 'Error getting category' })
+    }
+}
+
 export const login = async(req, res)=>{
     try{
-
         let { username, password } = req.body
-
         let user = await User.findOne({username})
         
         if(user && await checkPassword(password, user.password)){
             let loggedUser = {
+                uid: user._id,
                 username: user.username,
                 name: user.name,
                 role: user.role
-            }
+            }         
             
-            return res.send({message: `Welcome ${loggedUser.name}`, loggedUser})
-        }
+            let token = await generateJwt(loggedUser)
+            return res.send(
+               {   
+                   message: `Welcome ${loggedUser.name}`,
+                   loggedUser,
+                   token
+               }
+           )}
         return res.status(404).send({message: 'Invalid credentials'})
     }catch(err){
         console.error(err)
@@ -50,15 +62,11 @@ export const login = async(req, res)=>{
 }
 
 export const update = async(req, res)=>{ 
-    try{
-        
+    try{     
         let { id } = req.params
-        
         let data = req.body
-        
         let update = checkUpdate(data, id)
         if(!update) return res.status(400).send({message: 'Have submitted some data that cannot be updated or missing data'})
-        
         let updatedUser = await User.findOneAndUpdate(
             {_id: id},
             data, 
@@ -82,5 +90,17 @@ export const deleteU = async(req, res)=>{
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error deleting account'})
+    }
+}
+
+export const search = async(req, res)=>{
+    try{
+        let { search } = req.body
+        let user = await User.find({name: search})
+        if(!user) return res.status(404).send({message: 'User not found'})
+        return res.send({message: 'User found', user})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error searching user'})
     }
 }

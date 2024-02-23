@@ -5,6 +5,7 @@ import cors from 'cors'
 import { config } from 'dotenv'
 import categoriesRoutes from '../src/categories/categories.routes.js'
 import productsRoutes from '../src/products/products.routes.js'
+import userRoutes from '../src/user/user.routes.js'
 
 //Configuarcion
 const app = express()
@@ -21,6 +22,7 @@ app.use(morgan('dev'))
 //Rutas
 app.use(categoriesRoutes)
 app.use('/products',productsRoutes)
+app.use('/user', userRoutes)
 
 //servidor encendido
 export const initServer = ()=>{
