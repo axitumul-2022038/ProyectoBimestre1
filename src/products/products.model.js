@@ -6,7 +6,7 @@ const productsSchema = Schema({
         required: true
     },
     price: {
-        type: Number.parseFloat().toFixed(2),
+        type: Number,
         required: true
     },
     brand: {
