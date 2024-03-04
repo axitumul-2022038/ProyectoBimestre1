@@ -6,8 +6,7 @@ const compraSchema = Schema({
         required: true
     },
     date:{
-        type: String,
-        maxLength:[9,'the date is put dd/mm/yyyy'],
+        type: Date,
         required: true
     },
     description:{
@@ -24,7 +23,7 @@ const compraSchema = Schema({
         required: true
     },
     total:{
-        type: Number.parseFloat().toFixed(2),
+        type: Number,
         required: true
     }
 },{
