@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "ProyectoBim1",
-    "dateExported": "2024-02-23T17:41:07.707Z",
+    "dateExported": "2024-03-07T03:58:36.263Z",
     "version": "1.1",
     "folders": [
         {
@@ -24,6 +24,13 @@
             "containerId": "",
             "created": "2024-02-23T16:39:52.949Z",
             "sortNum": 40000
+        },
+        {
+            "_id": "eff2527c-a07b-4e0e-bd25-cc4d64d14f05",
+            "name": "COMPRA",
+            "containerId": "",
+            "created": "2024-03-04T17:32:13.713Z",
+            "sortNum": 50000
         }
     ],
     "requests": [
@@ -313,7 +320,7 @@
             "method": "POST",
             "sortNum": 80000,
             "created": "2024-02-23T16:41:06.944Z",
-            "modified": "2024-02-23T17:02:21.136Z",
+            "modified": "2024-03-07T03:06:50.752Z",
             "headers": [],
             "params": [],
             "body": {
@@ -322,15 +329,15 @@
                 "form": [
                     {
                         "name": "name",
-                        "value": "Axel"
+                        "value": "Christian"
                     },
                     {
                         "name": "surname",
-                        "value": "Xitumul"
+                        "value": "Iztep"
                     },
                     {
                         "name": "username",
-                        "value": "xitu"
+                        "value": "chcolate123"
                     },
                     {
                         "name": "password",
@@ -346,6 +353,7 @@
                     }
                 ]
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -357,7 +365,7 @@
             "method": "POST",
             "sortNum": 90000,
             "created": "2024-02-23T16:48:51.978Z",
-            "modified": "2024-02-23T16:49:51.312Z",
+            "modified": "2024-03-07T03:07:16.206Z",
             "headers": [],
             "params": [],
             "body": {
@@ -366,7 +374,7 @@
                 "form": [
                     {
                         "name": "username",
-                        "value": "jgarcia"
+                        "value": "chcolate123"
                     },
                     {
                         "name": "password",
@@ -374,6 +382,7 @@
                     }
                 ]
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -465,6 +474,58 @@
                     }
                 ]
             },
+            "tests": []
+        },
+        {
+            "_id": "00e9e924-7f7d-4911-827b-282c30cd8de2",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "eff2527c-a07b-4e0e-bd25-cc4d64d14f05",
+            "name": "Test",
+            "url": "/compra/test",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-03-04T17:36:14.544Z",
+            "modified": "2024-03-06T23:10:18.275Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "dc05580f-b094-4e19-a71f-9a524c626da4",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "eff2527c-a07b-4e0e-bd25-cc4d64d14f05",
+            "name": "Register",
+            "url": "/compra/register",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2024-03-06T23:12:25.281Z",
+            "modified": "2024-03-07T03:07:44.204Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk3ODA4MzYsImV4cCI6MTcwOTc5MTYzNn0.jF4e_YZmeZTqnWynQgs2OnQ9T4Lrcr9jAbhE8D5aZSo"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "date",
+                        "value": "2024/03/05"
+                    },
+                    {
+                        "name": "product",
+                        "value": "65d6cd5cf0618bd6003deea6"
+                    },
+                    {
+                        "name": "amount",
+                        "value": "18"
+                    }
+                ]
+            },
+            "reqType": "post",
             "tests": []
         }
     ],

@@ -2,7 +2,9 @@
 
 import Compra from "./compras.model.js"
 import { checkUpdate } from "../../utils/validator.js"
-import Product from "./compras.model.js"
+import Product from "../products/products.model.js"
+import Client  from "../user/user.model.js"
+import jwt from "jsonwebtoken"
 
 export const test = (req , res)=>{
     console.log('test is running')
@@ -12,11 +14,20 @@ export const test = (req , res)=>{
 export const register = async(req, res)=>{
     try{
         let data = req.body
+        let secretKey = process.env.SECRET_KEY
+        let {token} = req.headers
+        let {uid} = jwt.verify(token, secretKey)
+        data.client = uid
         let product = await Product.findOne({ _id: data.product })
-        if (!product) return res.status(404).send({ message: 'Purchase not found' })
+        if (!product) return res.status(404).send({ message: 'Product not found' })
+        let client = await Client.findOne({ _id: data.client })
+        if (!client) return res.status(404).send({ message: 'Client not found' })
+        let restaStock = await Product.findById(data.product)
+        restaStock.stock -= parseInt(data.amount)
+        await restaStock.save()
         let compra = new Compra(data)
-        await compra.save() 
-        return res.send({message: `Purchase registered correctly ${compra.description}`})
+        await compra.save()
+        return res.send({message: `Purchase registered correctly ${compra.date} and the stock is updated`, restaStock})
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error registering purchase', err: err})

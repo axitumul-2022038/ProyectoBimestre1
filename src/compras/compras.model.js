@@ -1,16 +1,8 @@
 import { Schema, model } from "mongoose"
 
 const compraSchema = Schema({
-    no:{
-        type: Number,
-        required: true
-    },
     date:{
         type: Date,
-        required: true
-    },
-    description:{
-        type: String,
         required: true
     },
     product:{
@@ -22,8 +14,9 @@ const compraSchema = Schema({
         type: Number,
         required: true
     },
-    total:{
-        type: Number,
+    client:{
+        type: Schema.Types.ObjectId,
+        ref: 'user',
         required: true
     }
 },{
