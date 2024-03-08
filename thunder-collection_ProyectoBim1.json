@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "ProyectoBim1",
-    "dateExported": "2024-03-07T03:58:36.263Z",
+    "dateExported": "2024-03-08T05:50:58.499Z",
     "version": "1.1",
     "folders": [
         {
@@ -499,11 +499,11 @@
             "method": "POST",
             "sortNum": 160000,
             "created": "2024-03-06T23:12:25.281Z",
-            "modified": "2024-03-07T03:07:44.204Z",
+            "modified": "2024-03-08T05:43:22.970Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk3ODA4MzYsImV4cCI6MTcwOTc5MTYzNn0.jF4e_YZmeZTqnWynQgs2OnQ9T4Lrcr9jAbhE8D5aZSo"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk4NzQ1NTksImV4cCI6MTcwOTg4NTM1OX0.DseEWZj6SpOEo9401PsD6g_YGR_f0PXuadJcjC94OMI"
                 }
             ],
             "params": [],
@@ -513,7 +513,8 @@
                 "form": [
                     {
                         "name": "date",
-                        "value": "2024/03/05"
+                        "value": "2024/03/05",
+                        "isDisabled": true
                     },
                     {
                         "name": "product",
@@ -526,6 +527,73 @@
                 ]
             },
             "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "75c95379-a04b-4ba0-b083-ca7e40dc65c3",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "eff2527c-a07b-4e0e-bd25-cc4d64d14f05",
+            "name": "Update",
+            "url": "/compra/update/65e93706c6244ec4006a436a",
+            "method": "PUT",
+            "sortNum": 180000,
+            "created": "2024-03-08T05:07:31.889Z",
+            "modified": "2024-03-08T05:20:14.955Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk4NzQ1NTksImV4cCI6MTcwOTg4NTM1OX0.DseEWZj6SpOEo9401PsD6g_YGR_f0PXuadJcjC94OMI"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "amount",
+                        "value": "16"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "4229c704-1941-436f-88fc-ead3bf136588",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "eff2527c-a07b-4e0e-bd25-cc4d64d14f05",
+            "name": "get",
+            "url": "/compra/get",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-03-08T05:22:10.729Z",
+            "modified": "2024-03-08T05:22:35.262Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk4NzQ1NTksImV4cCI6MTcwOTg4NTM1OX0.DseEWZj6SpOEo9401PsD6g_YGR_f0PXuadJcjC94OMI"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1eebbb27-4fdd-4ee3-b991-03be163daeee",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "eff2527c-a07b-4e0e-bd25-cc4d64d14f05",
+            "name": "Generar Factura",
+            "url": "/compra/factura",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2024-03-08T05:31:11.468Z",
+            "modified": "2024-03-08T05:32:25.080Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk4NzQ1NTksImV4cCI6MTcwOTg4NTM1OX0.DseEWZj6SpOEo9401PsD6g_YGR_f0PXuadJcjC94OMI"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ],

@@ -35,25 +35,24 @@ export const get = async (req, res) => {
 
 export const login = async(req, res)=>{
     try{
-        let { username, password } = req.body
-        let user = await User.findOne({username})
-        
+        let { username, password , email} = req.body
+        let user = await User.findOne({$or:[{username}, {email}]}) 
         if(user && await checkPassword(password, user.password)){
             let loggedUser = {
                 uid: user._id,
                 username: user.username,
                 name: user.name,
                 role: user.role
-            }         
-            
+            }
             let token = await generateJwt(loggedUser)
             return res.send(
-               {   
-                   message: `Welcome ${loggedUser.name}`,
-                   loggedUser,
-                   token
-               }
-           )}
+                {
+                    message: `Welcome ${loggedUser.name}`, 
+                    loggedUser,
+                    token
+                }
+            )
+        }
         return res.status(404).send({message: 'Invalid credentials'})
     }catch(err){
         console.error(err)
