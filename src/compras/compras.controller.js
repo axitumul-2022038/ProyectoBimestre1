@@ -91,7 +91,7 @@ export const generateAndDeleteInvoices = async (req, res) => {
     try {
         const uid = req.user.id
         const currentDate = new Date().toLocaleDateString('en-US', { timeZone: 'UTC' })
-        const compras = await Compra.find({ client: uid }).populate('product')
+        const compras = await Compra.find({ client: uid }).populate('product').populate('client')
         const fileName = `invoices_${uid}.pdf`
 
         const doc = new PDFDocument()
@@ -106,12 +106,13 @@ export const generateAndDeleteInvoices = async (req, res) => {
 
             if (index === 0) {
                 doc.fontSize(10).text('Date: ' + currentDate).moveDown()
+                doc.fontSize(10).text('Client: '+ compra.client.name, {align: 'right'}).moveDown()
             }
 
             doc.fontSize(10)
-                .text('Product: ' + compra.product.name, { continued: true })
-                .text('Price: ' + `Q${compra.product.price.toFixed(2)}`, { continued: true })
-                .text('Amount: ' + compra.amount, { continued: true })
+                .text('Product: ' + compra.product.name +' | ', { continued: true })
+                .text('Price: ' + `Q${compra.product.price.toFixed(2)}`+ ' | ', { continued: true })
+                .text('Amount: ' + compra.amount + ' | ', { continued: true })
                 .text('Total: ' + `Q${totalCompra.toFixed(2)}`)
                 .moveDown()
         })

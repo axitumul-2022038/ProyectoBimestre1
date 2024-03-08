@@ -78,3 +78,13 @@ export const search = async(req, res)=>{
         return res.status(500).send({message: 'Error searching product'})
     }
 }
+
+export const list = async (req, res) => {
+    try {
+        let data = await Products.find().populate('category')
+        return res.send({ data })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({ message: 'Error obtaining information' })
+    }
+}
