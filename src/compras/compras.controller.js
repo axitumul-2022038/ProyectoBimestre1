@@ -114,6 +114,7 @@ export const generateAndDeleteInvoices = async (req, res) => {
                 .text('Price: ' + `Q${compra.product.price.toFixed(2)}`+ ' | ', { continued: true })
                 .text('Amount: ' + compra.amount + ' | ', { continued: true })
                 .text('Total: ' + `Q${totalCompra.toFixed(2)}`)
+                .text('-----------------------------------------------------------------------------------------------------------')
                 .moveDown()
         })
 

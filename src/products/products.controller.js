@@ -79,12 +79,23 @@ export const search = async(req, res)=>{
     }
 }
 
-export const list = async (req, res) => {
+export const searchByCategory = async (req, res) => {
     try {
         let data = await Products.find().populate('category')
         return res.send({ data })
     } catch (error) {
         console.error(error)
         return res.status(500).send({ message: 'Error obtaining information' })
+    }
+}
+
+export const soldOut = async (req, res) => {
+    try {
+        let data = await Products.findOne({ stock: 0 }).populate('category')
+        if (!data) return res.status(444).send({ message: "there are no products out of stock" })
+        return res.send({ data })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({ message: 'the information cannot be brought' })
     }
 }
