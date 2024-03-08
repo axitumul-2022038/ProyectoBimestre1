@@ -90,24 +90,42 @@ export const get = async (req, res) => {
 export const generateAndDeleteInvoices = async (req, res) => {
     try {
         const uid = req.user.id
-        const compras = await Compra.find({ client: uid }).populate('product').populate('product')
-        const doc = new PDFDocument()
+        const currentDate = new Date().toLocaleDateString('en-US', { timeZone: 'UTC' })
+        const compras = await Compra.find({ client: uid }).populate('product')
         const fileName = `invoices_${uid}.pdf`
+
+        const doc = new PDFDocument()
         doc.pipe(fs.createWriteStream(fileName))
-        doc.fontSize(20).text('Invoices', { align: 'center' }).moveDown()
-        compras.forEach(compra => {
-            doc.fontSize(14).text(`Date: ${compra.date}`).moveDown()
-            doc.fontSize(14).text(`Product: ${compra.product.name}`).moveDown()
-            doc.fontSize(14).text(`Amount: ${compra.amount}`).moveDown()
-            doc.moveDown()
+
+        doc.fontSize(12).text('Invoices', { align: 'center' }).moveDown()
+
+        let total = 0
+        compras.forEach((compra, index) => {
+            const totalCompra = compra.product.price * compra.amount
+            total += totalCompra
+
+            if (index === 0) {
+                doc.fontSize(10).text('Date: ' + currentDate).moveDown()
+            }
+
+            doc.fontSize(10)
+                .text('Product: ' + compra.product.name, { continued: true })
+                .text('Price: ' + `Q${compra.product.price.toFixed(2)}`, { continued: true })
+                .text('Amount: ' + compra.amount, { continued: true })
+                .text('Total: ' + `Q${totalCompra.toFixed(2)}`)
+                .moveDown()
         })
+
+        doc.fontSize(12).text('Total: ' + `Q${total.toFixed(2)}`, { align: 'right' }).moveDown()
+
         doc.end()
+
         await Compra.deleteMany({ client: uid })
+
         res.download(fileName)
     } catch (error) {
         console.error('Error generating invoices and deleting purchases:', error)
         res.status(500).send('Error generating invoices and deleting purchases')
     }
 }
-
 
