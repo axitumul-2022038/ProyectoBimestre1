@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "ProyectoBim1",
-    "dateExported": "2024-03-08T05:50:58.499Z",
+    "dateExported": "2024-03-09T02:58:02.142Z",
     "version": "1.1",
     "folders": [
         {
@@ -169,23 +169,29 @@
             "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
             "containerId": "ca9ed842-9de8-4618-9ebd-3b2286ed9118",
             "name": "Update",
-            "url": "/products/update/65d6cc23f0618bd6003deea1",
+            "url": "/products/update/65d6cd5cf0618bd6003deea6",
             "method": "PUT",
             "sortNum": 30000,
             "created": "2024-02-23T03:45:34.422Z",
-            "modified": "2024-02-23T14:32:05.964Z",
-            "headers": [],
+            "modified": "2024-03-09T00:38:22.290Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4ZDQ1MzI1ZTEwNWQ1NWVkNzlkYmMiLCJ1c2VybmFtZSI6InhpdHUiLCJuYW1lIjoiQXhlbCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTcwOTk0NDY5NSwiZXhwIjoxNzA5OTU1NDk1fQ.7I_mIhhRunz_6bHvFjSIlow0r2g_4OOLqY4zemy4Fck"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "formencoded",
                 "raw": "",
                 "form": [
                     {
-                        "name": "price",
-                        "value": "25.50"
+                        "name": "stock",
+                        "value": "150"
                     }
                 ]
             },
+            "reqType": "put",
             "tests": []
         },
         {
@@ -365,7 +371,7 @@
             "method": "POST",
             "sortNum": 90000,
             "created": "2024-02-23T16:48:51.978Z",
-            "modified": "2024-03-07T03:07:16.206Z",
+            "modified": "2024-03-09T00:39:09.079Z",
             "headers": [],
             "params": [],
             "body": {
@@ -499,11 +505,11 @@
             "method": "POST",
             "sortNum": 160000,
             "created": "2024-03-06T23:12:25.281Z",
-            "modified": "2024-03-08T05:43:22.970Z",
+            "modified": "2024-03-09T02:32:47.549Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk4NzQ1NTksImV4cCI6MTcwOTg4NTM1OX0.DseEWZj6SpOEo9401PsD6g_YGR_f0PXuadJcjC94OMI"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk5NTE1NDgsImV4cCI6MTcwOTk2MjM0OH0.x7PZkf5SKe7nhbZ4jYKohObwk44kFMoRFNNr5VcfUtc"
                 }
             ],
             "params": [],
@@ -512,17 +518,12 @@
                 "raw": "",
                 "form": [
                     {
-                        "name": "date",
-                        "value": "2024/03/05",
-                        "isDisabled": true
-                    },
-                    {
                         "name": "product",
                         "value": "65d6cd5cf0618bd6003deea6"
                     },
                     {
                         "name": "amount",
-                        "value": "18"
+                        "value": "14"
                     }
                 ]
             },
@@ -534,15 +535,15 @@
             "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
             "containerId": "eff2527c-a07b-4e0e-bd25-cc4d64d14f05",
             "name": "Update",
-            "url": "/compra/update/65e93706c6244ec4006a436a",
+            "url": "/compra/update/65ebaf896e0b04656e6871b4",
             "method": "PUT",
             "sortNum": 180000,
             "created": "2024-03-08T05:07:31.889Z",
-            "modified": "2024-03-08T05:20:14.955Z",
+            "modified": "2024-03-09T00:52:12.897Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk4NzQ1NTksImV4cCI6MTcwOTg4NTM1OX0.DseEWZj6SpOEo9401PsD6g_YGR_f0PXuadJcjC94OMI"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk5NDQ3NDksImV4cCI6MTcwOTk1NTU0OX0.Ue81b8Nj_Neo51IEquW09WuA5wnecMMM4lXS1BTDaeA"
                 }
             ],
             "params": [],
@@ -552,10 +553,11 @@
                 "form": [
                     {
                         "name": "amount",
-                        "value": "16"
+                        "value": "423"
                     }
                 ]
             },
+            "reqType": "put",
             "tests": []
         },
         {
@@ -586,14 +588,67 @@
             "method": "GET",
             "sortNum": 200000,
             "created": "2024-03-08T05:31:11.468Z",
-            "modified": "2024-03-08T05:32:25.080Z",
+            "modified": "2024-03-09T02:33:31.959Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk4NzQ1NTksImV4cCI6MTcwOTg4NTM1OX0.DseEWZj6SpOEo9401PsD6g_YGR_f0PXuadJcjC94OMI"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5MmY0YWRjYTY0ZGE4NzYwZjU5N2YiLCJ1c2VybmFtZSI6ImNoY29sYXRlMTIzIiwibmFtZSI6IkNocmlzdGlhbiIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDk5NTE1NDgsImV4cCI6MTcwOTk2MjM0OH0.x7PZkf5SKe7nhbZ4jYKohObwk44kFMoRFNNr5VcfUtc"
                 }
             ],
             "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "80ac2e97-a3f8-4c28-9ab1-14d5afca0775",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "ca9ed842-9de8-4618-9ebd-3b2286ed9118",
+            "name": "List",
+            "url": "/products/searchByCategory",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2024-03-08T17:32:07.207Z",
+            "modified": "2024-03-08T17:33:58.855Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c98adc73-fd1d-43b6-93d8-1f4612da2b5c",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "ca9ed842-9de8-4618-9ebd-3b2286ed9118",
+            "name": "SoldOut",
+            "url": "/products/soldOut",
+            "method": "GET",
+            "sortNum": 220000,
+            "created": "2024-03-08T17:41:09.469Z",
+            "modified": "2024-03-08T17:42:03.459Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b8a3a918-11aa-4af4-b1f8-fc8d0b5fbb75",
+            "colId": "5daa769c-6b90-41f9-a4b9-c37d397458db",
+            "containerId": "ca9ed842-9de8-4618-9ebd-3b2286ed9118",
+            "name": "seachProduct",
+            "url": "/products/searchProduct",
+            "method": "POST",
+            "sortNum": 230000,
+            "created": "2024-03-09T01:15:51.818Z",
+            "modified": "2024-03-09T02:18:44.152Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "regex",
+                        "value": "i"
+                    }
+                ]
+            },
             "tests": []
         }
     ],

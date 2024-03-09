@@ -120,12 +120,12 @@ export const generateAndDeleteInvoices = async (req, res) => {
         const uid = req.user.id
         const currentDate = new Date().toLocaleDateString('en-US', { timeZone: 'UTC' })
         const compras = await Compra.find({ client: uid }).populate('product').populate('client')
-        const fileName = `invoices_${uid}.pdf`
+        const fileName = `Factura_${uid}.pdf`
 
         const doc = new PDFDocument()
         doc.pipe(fs.createWriteStream(fileName))
 
-        doc.fontSize(12).text('Invoices', { align: 'center' }).moveDown()
+        doc.fontSize(12).text('Factura', { align: 'center' }).moveDown()
 
         let total = 0
         compras.forEach((compra, index) => {
@@ -133,6 +133,7 @@ export const generateAndDeleteInvoices = async (req, res) => {
             total += totalCompra
 
             if (index === 0) {
+                doc.fontSize(10).text('Factura No: ' + compra._id).moveDown();
                 doc.fontSize(10).text('Date: ' + currentDate).moveDown()
                 doc.fontSize(10).text('Client: '+ compra.client.name, {align: 'right'}).moveDown()
             }
