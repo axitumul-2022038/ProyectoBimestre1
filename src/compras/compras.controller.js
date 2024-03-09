@@ -14,50 +14,77 @@ export const test = (req , res)=>{
 }
 
 export const register = async(req, res)=>{
-    try{
+    try {
         let data = req.body
         let secretKey = process.env.SECRET_KEY
         let {token} = req.headers
         let {uid} = jwt.verify(token, secretKey)
         data.client = uid
+
         let product = await Product.findOne({ _id: data.product })
         if (!product) return res.status(404).send({ message: 'Product not found' })
+
         let client = await Client.findOne({ _id: data.client })
         if (!client) return res.status(404).send({ message: 'Client not found' })
+
         let restaStock = await Product.findById(data.product)
+
+        // Verificar si hay suficientes productos en stock
+        if (restaStock.stock < parseInt(data.amount)) {
+            return res.status(400).send({ message: 'Insufficient products in stock' })
+        }
+
+        // Restar el stock solo si hay suficientes productos en stock
         restaStock.stock -= parseInt(data.amount)
         await restaStock.save()
+
         let compra = new Compra(data)
         await compra.save()
+
         return res.send({message: `Purchase registered correctly ${compra.date} and the stock is updated`, restaStock})
-    }catch(err){
+    } catch(err) {
         console.error(err)
         return res.status(500).send({message: 'Error registering purchase', err: err})
     }
 }
 
+
 export const update = async (req, res) => { 
     try {
-        let { id } = req.params  
+        let { id } = req.params
         let data = req.body
         let update = checkUpdate(data, id)
         if (!update) return res.status(400).send({ message: 'Some data cannot be updated or missing data' })
+
         let secretKey = process.env.SECRET_KEY
         let { token } = req.headers
         let { uid } = jwt.verify(token, secretKey)
+
         let originalCompra = await Compra.findById(id)
         if (!originalCompra) return res.status(404).send({ message: 'Purchase not found' })
         if (originalCompra.client.toString() !== uid) return res.status(403).send({ message: 'Unauthorized to update this purchase' })
+
+        let product = await Product.findById(originalCompra.product)
+        if (!product) return res.status(404).send({ message: 'Product not found' })
+
+        // Calcular la diferencia en la cantidad
+        let updateAmount = originalCompra.amount  - data.amount
+
+        // Verificar si hay suficientes productos en stock si se está agregando más productos a la compra
+        if (updateAmount < 0 && product.stock > updateAmount) {
+            return res.status(400).send({ message: 'Insufficient products in stock' })
+        }
+
+        // Actualizar el stock si hay suficientes productos en stock o si se está reduciendo la cantidad
+        product.stock += updateAmount
+        await product.save()
+
+        // Actualizar la compra
         let updatedCompra = await Compra.findOneAndUpdate(
             { _id: id },
             data,
             { new: true }
         ).populate('product')
-        let product = await Product.findById(originalCompra.product)
-        let updateAmount =originalCompra.amount  - data.amount
-    
-        product.stock += updateAmount
-        await product.save()
 
         if (!updatedCompra) return res.status(401).send({ message: 'Purchase not found and not updated' })
         return res.send({ message: 'Purchase updated', updatedCompra })
@@ -67,6 +94,7 @@ export const update = async (req, res) => {
         return res.status(500).send({ message: 'Error updating purchase' })
     }
 }
+
 
 
 

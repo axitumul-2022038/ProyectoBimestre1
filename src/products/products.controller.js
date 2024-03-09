@@ -99,3 +99,17 @@ export const soldOut = async (req, res) => {
         return res.status(500).send({ message: 'the information cannot be brought' })
     }
 }
+
+export const searchProduct = async (req, res) => {
+    try {
+        const searchTerm = req.query.term; 
+        const regex = new RegExp(searchTerm, 'i'); 
+
+        const products = await Products.find({ name: regex });
+
+        return res.send({ products });
+    } catch (error) {
+        console.error('Error searching products:', error);
+        return res.status(500).send('Error searching products');
+    }
+};
